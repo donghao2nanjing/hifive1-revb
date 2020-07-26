@@ -1,4 +1,4 @@
-#include <led.h>
+#include <drv_led.h>
 #include <platform.h>
 #include <hifive1.h>
 #include <gpio.h>
@@ -13,6 +13,9 @@ void led_init(void){
     GPIO_REG(GPIO_OUTPUT_EN) |= (1UL << GREEN_LED_OFFSET);
     GPIO_REG(GPIO_OUTPUT_EN) |= (1UL << BLUE_LED_OFFSET);
 
+    led_set(LED_RED, LED_OFF);
+    led_set(LED_BLUE, LED_OFF);
+    led_set(LED_GREEN, LED_OFF);
 }
 
 static void _led_set(rt_uint8_t offset, rt_uint8_t val){
